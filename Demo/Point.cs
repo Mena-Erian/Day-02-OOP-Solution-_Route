@@ -9,6 +9,7 @@ namespace Demo
         private int y;  // 4 Bytes 
         #endregion
 
+        #region Constructors
         /// // Constructor : is a Special Funciton
         /// //                  1. Named always with the same Name of its Class or Struct
         /// //                  2. Has No Return
@@ -33,7 +34,7 @@ namespace Demo
             x = default;
             y = default;
         }
-        public Point (int number)
+        public Point(int number)
         {
             this.x = this.y = number;
         }
@@ -47,8 +48,8 @@ namespace Demo
 
             this.x = x;
             this.y = y;
-        }
-
+        } 
+        #endregion
 
         #region Methods
         public override string ToString()
@@ -57,6 +58,9 @@ namespace Demo
             return $"({this.x}, {this.y})";
         } 
         #endregion
-
     }
+    /*
+     
+     
+     */
 }
