@@ -69,6 +69,33 @@ namespace Demo
             /// Console.WriteLine(employee);
             #endregion
 
+            #region Indexer
+            /// // capacity = 10
+            /// // count = 6
+            /// PhoneBook phoneBook = new PhoneBook(10);
+            /// phoneBook.AddPerson(0, "Mena", 1111);
+            /// phoneBook.AddPerson(1, "Maro", 2222);
+            /// phoneBook.AddPerson(2, "Osama", 3333);
+            /// phoneBook.AddPerson(3, "Amany", 7777);
+            /// 
+            /// phoneBook.SetNumbers("Mena", 55486);
+            ///  
+            /// phoneBook["Maro"] = 565652; 
+            /// 
+            /// Console.WriteLine( phoneBook["Maro"]);
+            /// 
+            /// for (int i = 0; i < phoneBook.Size; i++)
+            /// {
+            ///     Console.WriteLine(phoneBook[i]);
+            /// }
+
+            /// string Name = "Mena";
+            /// Console.WriteLine(Name[1]); // e
+            /// // Name[1] = "k"; // Can't do this Becouse string index is just get (readonle) 
+            /// // And Don't Have Set indexer 
+            #endregion
+
         }
     }
+
 }
