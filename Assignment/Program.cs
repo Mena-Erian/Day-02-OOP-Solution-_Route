@@ -1,13 +1,14 @@
 ﻿using Assignemnt;
+using Microsoft.VisualBasic;
 
 namespace Assignment
 {
     internal class Program
     {
-        static void Main( )
+        static void Main()
         {
             #region Part 01
-            
+
             #region Q1.Person Struct
             /// Person p1 = new Person("Mena", 21);
             /// Person p2 = new Person("Hamada", 25);
@@ -33,9 +34,27 @@ namespace Assignment
             /// 
             /// Console.WriteLine($" The Oldest Person => {Person.GetOldestUser(people)}");
             #endregion
-            
+
             #endregion
 
+            #region Part 02
+
+            //Employee e1 = new Employee()
+            //{
+            //    Id = 1,
+            //    Name = "Mena",
+            //    Salary = 100000,
+            //    Gender = Gender.Male,
+            //    HiringDate = (Date)$"5/05/2025"
+            //};
+
+            //Console.WriteLine(e1);
+
+            int val = 1960;
+            Console.WriteLine((DateTime.Now.Year - val) < 61  );
+
+
+            #endregion
 
         }
     }
