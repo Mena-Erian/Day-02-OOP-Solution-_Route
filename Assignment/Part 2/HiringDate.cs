@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Assignment.Part_2
 {
-    internal class HiringDate 
+    internal class HiringDate
     {
         #region Attributes
         private int day;
@@ -28,7 +28,7 @@ namespace Assignment.Part_2
                 else
                 {
                     Console.WriteLine("The Day is Not Vaild So, Please Enter Valid Day");
-                    value = GetIntFromUser("Day");
+                    value = GlobalMethods.GetIntFromUser("Day");
                     Day = value;
                 }
             }
@@ -45,7 +45,7 @@ namespace Assignment.Part_2
                 else
                 {
                     Console.WriteLine("The Month is Not Vaild So, Please Enter Valid Month");
-                    value = GetIntFromUser("Month");
+                    value = GlobalMethods.GetIntFromUser("Month");
                     this.Month = value;
                 }
             }
@@ -62,7 +62,7 @@ namespace Assignment.Part_2
                 else
                 {
                     Console.WriteLine("The Year is Not Vaild So, Please Enter Valid Year");
-                    value = GetIntFromUser("Year");
+                    value = GlobalMethods.GetIntFromUser("Year");
                     this.Year = value;
                 }
             }
@@ -77,21 +77,11 @@ namespace Assignment.Part_2
         #endregion
 
         #region Mehtods
-        public static int GetIntFromUser(string dataName)
-        {
-            int number = 0;
-            do
-            {
-                Console.Write($"Please Enter the {dataName}: ");
-            }
-            while (!int.TryParse(Console.ReadLine(), out number));
-            return number;
-        }
         private void SetDateFromUser()
         {
-            this.Day = HiringDate.GetIntFromUser("Day");
-            this.Month = HiringDate.GetIntFromUser("Month");
-            this.Year = HiringDate.GetIntFromUser("Year");
+            this.Day = GlobalMethods.GetIntFromUser("Day");
+            this.Month = GlobalMethods.GetIntFromUser("Month");
+            this.Year = GlobalMethods.GetIntFromUser("Year");
             Date = new DateOnly(Year, Month, Day);
         }
         #endregion
