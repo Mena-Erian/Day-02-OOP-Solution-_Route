@@ -6,25 +6,29 @@ using System.Threading.Tasks;
 
 namespace Assignment.Part_2
 {
-    internal class HiringDate
+    internal class HiringDate 
     {
+        #region Attributes
         private int day;
         private int month;
         private int year;
+        #endregion
 
+        #region Properties
+        public DateOnly Date { get; private set; }
         public int Day
         {
             get { return day; }
             set
             {
-                
                 if (value > 0 && value < 32)
                 {
-                    day = value;
+                    this.day = value;
                 }
                 else
                 {
-                    Console.WriteLine("The Day Not Vaild");
+                    Console.WriteLine("The Day is Not Vaild So, Please Enter Valid Day");
+                    value = GetIntFromUser("Day");
                     Day = value;
                 }
             }
@@ -36,11 +40,13 @@ namespace Assignment.Part_2
             {
                 if (value > 0 && value < 13)
                 {
-                    day = value;
+                    this.month = value;
                 }
                 else
                 {
-                    day = 1;
+                    Console.WriteLine("The Month is Not Vaild So, Please Enter Valid Month");
+                    value = GetIntFromUser("Month");
+                    this.Month = value;
                 }
             }
         }
@@ -51,18 +57,43 @@ namespace Assignment.Part_2
             {
                 if (((DateTime.Now.Year - value) < 61) && value < DateTime.Now.Year)
                 {
-                    year = value;
+                    this.year = value;
                 }
                 else
                 {
-                   year = 0;
+                    Console.WriteLine("The Year is Not Vaild So, Please Enter Valid Year");
+                    value = GetIntFromUser("Year");
+                    this.Year = value;
                 }
             }
         }
+        #endregion
 
+        #region Constructors
+        public HiringDate()
+        {
+            this.SetDateFromUser();
+        }
+        #endregion
 
-
-
-
+        #region Mehtods
+        public static int GetIntFromUser(string dataName)
+        {
+            int number = 0;
+            do
+            {
+                Console.Write($"Please Enter the {dataName}: ");
+            }
+            while (!int.TryParse(Console.ReadLine(), out number));
+            return number;
+        }
+        private void SetDateFromUser()
+        {
+            this.Day = HiringDate.GetIntFromUser("Day");
+            this.Month = HiringDate.GetIntFromUser("Month");
+            this.Year = HiringDate.GetIntFromUser("Year");
+            Date = new DateOnly(Year, Month, Day);
+        }
+        #endregion
     }
 }
