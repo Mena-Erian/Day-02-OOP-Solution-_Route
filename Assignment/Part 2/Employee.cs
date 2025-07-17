@@ -55,7 +55,7 @@ namespace Assignment
                 number = GlobalMethods.GetIntFromUser("\n1. Guest\n2. Developer\n3. Secretary\n4. DBA" +
                     "\n\n Enter The Number Of Security Level From this Menu: ", true);
             }
-            while (number > 0 && number < 5);
+            while (!(number > 0 && number < 5));
 
             switch (number)
             {
@@ -93,10 +93,9 @@ namespace Assignment
                                                       "\n\n Enter The Number Of Security Level From this Menu: "
                                                   , true);
             }
-            while (number > 0 && number < 16);
+            while (!(number > 0 && number < 16));
             return (SecurityLevels)number;
         }
-
 
         internal SecurityLevels SetSecurityLevel()
         {
@@ -107,7 +106,7 @@ namespace Assignment
             {
                 number = GlobalMethods.GetIntFromUser("Is This Employee Have More Than One Security Level If\nIf One Please Enter 1 And If More So Please Enter 2");
             }
-            while ( !(number == 1 || number == 2));
+            while (!(number == 1 || number == 2));
 
             if (number == 1)
             {
