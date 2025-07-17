@@ -79,10 +79,19 @@ namespace Assignment.Part_2
         #region Mehtods
         private void SetDateFromUser()
         {
-            this.Day = GlobalMethods.GetIntFromUser("Day");
-            this.Month = GlobalMethods.GetIntFromUser("Month");
-            this.Year = GlobalMethods.GetIntFromUser("Year");
-            Date = new DateOnly(Year, Month, Day);
+            this.Day = GlobalMethods.GetIntFromUser("Hiring Day");
+            this.Month = GlobalMethods.GetIntFromUser("Hiring Month");
+            this.Year = GlobalMethods.GetIntFromUser("Hiring Year");
+
+            try
+            {
+                Date = new DateOnly(Year, Month, Day);
+            }
+            catch (Exception)
+            {
+                Console.WriteLine($"this Date is Not Valid");
+                SetDateFromUser();
+            }
         }
         #endregion
     }

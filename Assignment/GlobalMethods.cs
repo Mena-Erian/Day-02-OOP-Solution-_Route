@@ -46,10 +46,10 @@ namespace Assignment
             string str = string.Empty;
             do
             {
-                Console.WriteLine($"Please Enter the {dataName}: ");
+                Console.Write($"Please Enter the {dataName}: ");
                 str = Console.ReadLine() ?? string.Empty;
             }
-            while (str == string.Empty);
+            while (str == string.Empty || int.TryParse(str, out _));
 
             return str;
         }
@@ -61,20 +61,20 @@ namespace Assignment
             {
                 do
                 {
-                    Console.WriteLine(msg);
+                    Console.Write(msg);
                     isParsed = char.TryParse(Console.ReadLine(), out character);
                 }
-                while (!(isParsed && !int.TryParse(character.ToString(),out _) ));
+                while (!(isParsed && !int.TryParse(character.ToString(), out _)));
             }
             else
             {
                 do
                 {
-                    Console.WriteLine($"Please Enter the {msg}: ");
+                    Console.Write($"Please Enter the {msg}: ");
+                    isParsed = char.TryParse(Console.ReadLine(), out character);
                 }
-                while (!(char.TryParse(Console.ReadLine(), out character)));
+                while (!(isParsed && !int.TryParse(character.ToString(), out _)));
             }
-
 
             return character;
         }
