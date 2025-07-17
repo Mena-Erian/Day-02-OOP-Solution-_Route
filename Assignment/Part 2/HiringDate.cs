@@ -74,6 +74,12 @@ namespace Assignment.Part_2
         {
             this.SetDateFromUser();
         }
+        public HiringDate(int day,int month,int year)
+        {
+            Day = day;
+            Month = month;
+            Year = year;
+        }
         #endregion
 
         #region Mehtods
@@ -92,6 +98,10 @@ namespace Assignment.Part_2
                 Console.WriteLine($"this Date is Not Valid");
                 SetDateFromUser();
             }
+        }
+        public override string ToString()
+        {
+            return $"Day: {day},Month: {month},Year: {year}";
         }
         #endregion
     }

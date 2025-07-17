@@ -1,4 +1,5 @@
 ﻿using Assignemnt;
+using Assignment.Part_2;
 using Microsoft.VisualBasic;
 
 namespace Assignment
@@ -38,23 +39,20 @@ namespace Assignment
             #endregion
 
             #region Part 02
+            //Employee[] employees = new Employee[3];
+            //Employee.SetEmployees(employees);
 
-            //Employee e1 = new Employee()
-            //{
-            //    Id = 1,
-            //    Name = "Mena",
-            //    Salary = 100000,
-            //    Gender = Gender.Male,
-            //    HiringDate = (Date)$"5/05/2025"
-            //};
+            //Employee[] employees = Employee.SetEmployees(3);
+            Employee[] employees = [
+                new Employee(1,"Mena",50_000,SecurityLevels.DBA,Gender.Male,new HiringDate(1,2,1980)),
+                new Employee(2,"Kero",5000,SecurityLevels.Guest,Gender.Male,new HiringDate(1,2,2020)),
+                new Employee(3,"Security Officer Karas",10_000,(SecurityLevels)15,Gender.Male,new HiringDate(1,2,1990)),
+                ];
 
-            //Console.WriteLine(e1);
-
-            int val = 1960;
-            Console.WriteLine((DateTime.Now.Year - val) < 61  );
-
+            Employee.DisplayEmployees(employees);
 
             #endregion
+
 
         }
     }

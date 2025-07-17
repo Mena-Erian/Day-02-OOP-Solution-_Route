@@ -27,12 +27,22 @@ namespace Assignment
             this.gender = SetGender();
             this.hiringDate = new HiringDate();
         }
+        public Employee(int id, string name, int salary, SecurityLevels securityLevel, Gender gender, HiringDate hiringDate)
+        {
+            this.Id = id;
+            this.Name = name;
+            this.Salary = salary;
+            this.securityLevel = securityLevel;
+            this.gender = gender;
+            this.hiringDate = hiringDate;
+        }
         #endregion
 
         #region Properties
         public int Id { get; init; }
         public string Name { get; set; }
         public decimal Salary { get; set; }
+        public HiringDate HiringDate { get { return hiringDate; } }
         #endregion
 
         #region Methods
@@ -137,11 +147,54 @@ namespace Assignment
             return this.gender;
         }
         #endregion
-        
+
+        #region Static Methods
+        static public Employee[] SetEmployees(int size)
+        {
+            Employee[] employees = new Employee[size];
+
+            for (int i = 0; i < size; i++)
+            {
+                Console.WriteLine($"Set Employee {i + 1}: \n");
+                employees[i] = new Employee();
+                Console.Clear();
+            }
+
+            return employees;
+        }
+        static public Employee[] SetEmployees(Employee[] employees)
+        {
+            for (int i = 0; i < employees.Length; i++)
+            {
+                Console.WriteLine($"Set Employee {i + 1}: \n");
+                employees[i] = new Employee();
+                Console.Clear();
+            }
+
+            return employees;
+        }
+        static public void DisplayEmployees(Employee[] employees)
+        {
+            for (int i = 0; i < employees.Length; i++)
+            {
+                Console.WriteLine(employees[i].ToString());
+            }
+        }
+        //static public Employee[] Sort( Employee[] employees)
+        //{
+        //    Array.Sort(employees, (e1, e2) => e1.hiringDate.Date.CompareTo(e2.hiringDate.Date));
+        //    //return employees.OrderBy(e => e.hiringDate.Date).ToArray();
+        //    return employees;
+        //}
+        #endregion
+
+        #region Global Methods
         public override string ToString()
         {
-            return $"Id: {Id},\nName: {Name},\nSecurity Level: {this.securityLevel} ,\n{System.String.Format("Salary: {0:c}", Salary)},\nHire Date: {hiringDate:D} ";
+            return $"\n\nId: {Id},\nName: {Name},\nSecurity Level: {this.securityLevel} ,\n{System.String.Format("Salary: {0:c}", Salary)},\nHire Date: {hiringDate.ToString():D} ";
         }
+        #endregion
+
         #endregion
 
     }
@@ -150,6 +203,10 @@ namespace Assignment
     public enum SecurityLevels : byte
     {
         Guest = 1, Developer = 2, Secretary = 4, DBA = 8
+
+        // `|=`  => to Add
+        // `&= ~()  `  => to Delete
+        // `^=` => to Toggle
     }
     public enum Gender : byte
     {
