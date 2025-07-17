@@ -53,5 +53,31 @@ namespace Assignment
 
             return str;
         }
+        public static char GetCharFromUser(string msg, bool isMainMsg = false)
+        {
+            char character = default(char);
+            bool isParsed = false;
+            if (isMainMsg)
+            {
+                do
+                {
+                    Console.WriteLine(msg);
+                    isParsed = char.TryParse(Console.ReadLine(), out character);
+                }
+                while (!(isParsed && !int.TryParse(character.ToString(),out _) ));
+            }
+            else
+            {
+                do
+                {
+                    Console.WriteLine($"Please Enter the {msg}: ");
+                }
+                while (!(char.TryParse(Console.ReadLine(), out character)));
+            }
+
+
+            return character;
+        }
+
     }
 }

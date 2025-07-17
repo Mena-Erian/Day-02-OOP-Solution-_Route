@@ -14,26 +14,22 @@ namespace Assignment
         #region Fields
         private HiringDate hiringDate;
         private SecurityLevels securityLevel;
-
+        internal Gender gender;
         #endregion
 
         #region Constructors
-        public Employee()
-        {
-            Salary = 9;
-        }
         public Employee(int id)
+        {
+            SetGender();
+
+        }
+        public Employee()
         {
             this.Id = GlobalMethods.GetIntFromUser("ID Of Employee");
             this.Name = GlobalMethods.GetStringFromUser("Name of Employee");
             this.Salary = GlobalMethods.GetIntFromUser("Salary of User");
             this.securityLevel = SetSecurityLevel();
-        }
-
-        public Employee(int id, string name, SecurityLevels securityLevel, decimal salary, Gender gender, HiringDate hiringDate)
-        {
-            this.securityLevel = securityLevel;
-            Gender = gender;
+            SetGender();
             this.hiringDate = new HiringDate();
         }
         #endregion
@@ -41,12 +37,12 @@ namespace Assignment
         #region Properties
         public int Id { get; init; }
         public string Name { get; set; }
-
         public decimal Salary { get; set; }
-        public Gender Gender { get; set; }
         #endregion
 
         #region Methods
+
+        #region Security Levels Methods
         private SecurityLevels GetSingleSecurityLevelFromUser()
         {
             int number = 0;
@@ -97,7 +93,7 @@ namespace Assignment
             return (SecurityLevels)number;
         }
 
-        internal SecurityLevels SetSecurityLevel()
+        private SecurityLevels SetSecurityLevel()
         {
             int number;
             Console.WriteLine("Let's Enter The Security Level Of this Employee: \n");
@@ -116,6 +112,38 @@ namespace Assignment
             this.securityLevel = GetMultiSecurityLevelFromUser();
             return this.securityLevel;
         }
+        #endregion
+
+        #region Gender Methods
+
+        private Gender SetGender()
+        {
+            char character = default;
+
+            character = GlobalMethods.GetCharFromUser("\n1. Male\n2. Female\n" +
+                "\n Enter The Char Of Gender From this Menu: ", true);
+
+            switch (character)
+            {
+                case 'M':
+                    this.gender = Gender.Male;
+                    break;
+                case 'm':
+                    goto case 'M';
+                case 'F':
+                    this.gender = Gender.Female;
+                    break;
+                case 'f':
+                    goto case 'f';
+                default:
+                    Console.Clear();
+                    Console.WriteLine("Your Input it Not Valid Please Try Again\n");
+                    return SetGender();
+            }
+            return this.gender;
+        }
+
+        #endregion
 
 
         public override string ToString()
